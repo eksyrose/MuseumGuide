@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Museum Guide</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_fullscreen_map">FullscreenActivityMap</string>
+
+    <string name="title_activity_fullscreen_slides1">FullscreenActivitySlides1</string>
+
+    <string name="title_activity_fullscreen_slides2">FullscreenActivitySlides2</string>
+
+    <string name="title_activity_fullscreen_guide_mode">FullscreenActivityGuideMode</string>
+</resources>
