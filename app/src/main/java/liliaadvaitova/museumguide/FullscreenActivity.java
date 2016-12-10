@@ -1,14 +1,20 @@
 package liliaadvaitova.museumguide;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.app.AlertDialog;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.net.*;
 import java.util.*;
@@ -43,6 +49,9 @@ public class FullscreenActivity extends AppCompatActivity {
     private Button ButtonSlides1;
     private Button ButtonSlides2;
     private Button ButtonGuideMode;
+
+    final String pass = "456";
+    final Context context = this;
 
     /* These two variables hold the IP address and port number.
        You should change them to the appropriate address and port.
@@ -217,10 +226,52 @@ public class FullscreenActivity extends AppCompatActivity {
         ButtonGuideMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //oscThread.start();
-                Intent myInt = new Intent(FullscreenActivity.this, FullscreenActivityGuideMode.class);
-                //myInt.putExtra("key", value);
-                FullscreenActivity.this.startActivity(myInt);
+                //Получаем вид с файла dialog.xml, который применим для диалогового окна:
+                LayoutInflater li = LayoutInflater.from(context);
+                View dialogView = li.inflate(R.layout.dialog, null);
+
+                //Создаем AlertDialog
+                AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(context);
+
+                //Настраиваем dialog.xml для нашего AlertDialog:
+                mDialogBuilder.setView(dialogView);
+
+                //Настраиваем отображение поля для ввода текста в открытом диалоге:
+                final EditText userInput = (EditText) dialogView.findViewById(R.id.input_text);
+
+                //Настраиваем сообщение в диалоговом окне:
+                mDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        //
+
+                                        if (userInput.getText().toString().equals(pass)/*==pass*/) {
+                                            //oscThread.start();
+                                            Intent myInt = new Intent(FullscreenActivity.this, FullscreenActivityGuideMode.class);
+                                            //myInt.putExtra("key", value);
+                                            FullscreenActivity.this.startActivity(myInt);
+                                        }
+                                        else {
+                                            Toast toast = Toast.makeText(getApplicationContext(), "Wrong password", Toast.LENGTH_SHORT);
+                                            toast.show();
+                                        }
+                                    }
+                                })
+                        .setNegativeButton("Отмена",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                //Создаем AlertDialog:
+                AlertDialog alertDialog = mDialogBuilder.create();
+
+                //и отображаем его:
+                alertDialog.show();
+
             }
         });
 

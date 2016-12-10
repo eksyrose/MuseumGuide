@@ -33,7 +33,7 @@ public class FullscreenActivityMap extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
-    private Button ButtonBack;
+    private Button back;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -94,7 +94,7 @@ public class FullscreenActivityMap extends AppCompatActivity {
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
-        ButtonBack = (Button) findViewById(R.id.button5);
+        back = (Button) findViewById(R.id.dummy_button);
 
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -105,7 +105,7 @@ public class FullscreenActivityMap extends AppCompatActivity {
             }
         });
 
-        ButtonBack.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
