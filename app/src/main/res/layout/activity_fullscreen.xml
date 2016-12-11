@@ -2,22 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@drawable/back"
     tools:context="liliaadvaitova.museumguide.FullscreenActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
@@ -36,7 +26,8 @@
             android:orientation="horizontal"
             tools:ignore="UselessParent"
             android:weightSum="1"
-            android:gravity="right">
+            android:gravity="right"
+            android:visibility="invisible">
 
             <Button
                 android:id="@+id/dummy_button"
@@ -50,31 +41,38 @@
 
         <Button
             android:text="Button"
-            android:layout_width="190dp"
-            android:layout_height="113dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:id="@+id/button"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/btnmap" />
 
         <Button
-            android:text="Button"
-            android:layout_width="166dp"
-            android:layout_height="110dp"
-            android:id="@+id/button2"
-            android:layout_gravity="center" />
-
-        <Button
-            android:text="Button"
-            android:layout_width="177dp"
-            android:layout_height="116dp"
+            android:text=""
+            android:layout_width="200dp"
+            android:layout_height="250dp"
             android:id="@+id/button3"
-            android:layout_gravity="right|center_vertical" />
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/btnslide2"/>
 
         <Button
-            android:text="Button"
-            android:layout_width="174dp"
+            android:text=""
+            android:layout_width="307dp"
             android:layout_height="105dp"
             android:id="@+id/button4"
-            android:layout_gravity="bottom|right" />
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btnguidemode"/>
+
+        <Button
+            android:text=""
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:id="@+id/button2"
+            android:layout_gravity="center_vertical|center"
+            android:background="@drawable/btnslide1"/>
     </FrameLayout>
 
 </FrameLayout>
